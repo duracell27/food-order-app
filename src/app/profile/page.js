@@ -2,8 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-import Image from "next/image";
+
 import toast from "react-hot-toast";
+import EditableImage from '../../components/EditableImage'
 
 import UserTabs from '../../components/UserTabs';
 
@@ -70,32 +71,32 @@ const ProfilePage = () => {
     }
   };
 
-  const handleFileChange = async (e) => {
-    e.preventDefault();
+  // const handleFileChange = async (e) => {
+  //   e.preventDefault();
 
-    const files = e.target.files;
-    if (files.length === 1) {
-      const data = new FormData();
-      data.set("file", files[0]);
+  //   const files = e.target.files;
+  //   if (files.length === 1) {
+  //     const data = new FormData();
+  //     data.set("file", files[0]);
 
-      toast("Uploading ...");
-      const uploadPromise = fetch("/api/upload", {
-        method: "POST",
-        body: data,
-      }).then((response) => {
-        if (response.ok) {
-          return response.json().then((link) => setImage(link));
-        }
-        throw new Error("Something went wrong");
-      });
+  //     toast("Uploading ...");
+  //     const uploadPromise = fetch("/api/upload", {
+  //       method: "POST",
+  //       body: data,
+  //     }).then((response) => {
+  //       if (response.ok) {
+  //         return response.json().then((link) => setImage(link));
+  //       }
+  //       throw new Error("Something went wrong");
+  //     });
 
-      await toast.promise(uploadPromise, {
-        loading: "Uploading ...",
-        success: "Uploading completed successfully",
-        error: "Upload error",
-      });
-    }
-  };
+  //     await toast.promise(uploadPromise, {
+  //       loading: "Uploading ...",
+  //       success: "Uploading completed successfully",
+  //       error: "Upload error",
+  //     });
+  //   }
+  // };
 
   return (
     <section className="mt-8">
@@ -106,7 +107,8 @@ const ProfilePage = () => {
         <div className="flex gap-4 ">
           <div className="">
             <div className=" rounded-lg p-2 max-w-[120px]">
-              <div className="relative ">
+              <EditableImage link={image} setLink={setImage}/>
+              {/* <div className="relative ">
                 {image && (
                   <Image
                     className="rounded-lg h-full w-full"
@@ -126,7 +128,7 @@ const ProfilePage = () => {
                 <span className="border border-gray-300 cursor-pointer rounded-lg block p-2 px-8 text-center mt-4">
                   Edit
                 </span>
-              </label>
+              </label> */}
             </div>
           </div>
           <form className="grow" onSubmit={handleProfileUpdate}>

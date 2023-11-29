@@ -92,7 +92,7 @@ const CategoriesPage = () => {
                 setEditedCategory(category);
                 setCategory(category.name);
               }}
-              className="bg-gray-200 rounded-xl p-2 px-4 flex gap-1 cursor-pointer mb-2"
+              className=" rounded-xl p-2 px-4 flex gap-1 cursor-pointer mb-2"
             >
               <span>{category.name}</span>
             </button>

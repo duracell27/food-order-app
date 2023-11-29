@@ -1,4 +1,3 @@
-
 import Hero from "../components/Hero";
 import HomeMenu from "../components/HomeMenu";
 import SectionHeaders from "../components/SectionHeaders";
