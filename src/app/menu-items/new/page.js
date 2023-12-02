@@ -42,7 +42,7 @@ const NewMenuItemPage = () => {
   if (loading) return "Loading...";
   if (!isAdmin) return "NOT AN ADMIN";
   return (
-    <section className="mt-8 max-w-md mx-auto">
+    <section className="mt-8 max-w-lg mx-auto">
       <UserTabs isAdmin={isAdmin} />
       <div className="mt-8">
         <Link href={"/menu-items"} className="button flex">
