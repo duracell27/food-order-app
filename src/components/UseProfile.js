@@ -8,7 +8,7 @@ export default function useProfile() {
     setLoading(true);
     fetch("/api/profile", { method: "GET" }).then((response) =>
       response.json().then((data) => {
-        setData(data?.isAdmin);
+        setData(data);
         setLoading(false);
       })
     );
